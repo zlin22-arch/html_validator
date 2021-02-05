@@ -29,6 +29,13 @@ def test__extract_tags_8():
     with pytest.raises(ValueError, match='found < without matching >'):
         HTML_Validator._extract_tags('this is a <strong< test')
 
+def test__extract_tags_9():
+    n = 10000
+    open_tags = [ '<' + str(i) + '>' for i in range(n) ]
+    close_tags = [ '</' + str(i) + '>' for i in range(n) ]
+    tags = open_tags + close_tags
+    assert HTML_Validator._extract_tags(' '.join(tags)) == tags
+
 
 def test_validate_html_1():
     assert HTML_Validator.validate_html('')
@@ -89,3 +96,19 @@ def test_validate_html_12():
 
 def test_validate_html_13():
     assert not HTML_Validator.validate_html('this is a <strong< test')
+
+def test_validate_html_14():
+    n = 10000
+    open_tags = [ '<' + str(i) + '>' for i in range(n) ]
+    close_tags = [ '</' + str(i) + '>' for i in range(n) ]
+    close_tags.reverse()
+    tags = open_tags + close_tags
+    assert HTML_Validator.validate_html(' '.join(tags))
+    assert not HTML_Validator.validate_html(' '.join(open_tags))
+    assert not HTML_Validator.validate_html(' '.join(close_tags))
+    assert not HTML_Validator.validate_html(' '.join(tags[0:-1]))
+
+def test_validate_html_15():
+    n = 10000
+    tags = [ '<' + str(i) + '></' + str(i) + '>' for i in range(n) ]
+    assert HTML_Validator.validate_html(' '.join(tags))
