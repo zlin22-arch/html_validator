@@ -1,6 +1,6 @@
 # HTML Validation with Stacks
 [![](https://github.com/mikeizbicki/html_validator/workflows/tests/badge.svg)](https://github.com/mikeizbicki/html_validator/actions?query=workflow%3Atests)
-[![](https://github.com/mikeizbicki/html_validator/workflows/tests-ec/badge.svg)](https://github.com/mikeizbicki/html_validator/actions?query=workflow%3Atests)
+[![](https://github.com/mikeizbicki/html_validator/workflows/extra_credit/badge.svg)](https://github.com/mikeizbicki/html_validator/actions?query=workflow%3Atests)
 
 You will implement an extended version of the balanced parentheses algorithm that checks whether html tags are balanced.
 (See [chapter 4.7](https://runestone.academy/runestone/books/published/pythonds/BasicDS/BalancedSymbolsAGeneralCase.html) of the book for details on the balanced parentheses algorithm.)
@@ -62,13 +62,20 @@ Complete the following tasks:
 1. Update the `README.md` file so that the test case badges point to your forked repo
 1. Implement the `validate_html` and `_extract_tags` functions so that all test cases in `tests/test_main.py` pass
 
-## Extra Credit
+## Extra Credit: HTML Attribues
 
-You can earn 1 point of extra credit on this assignment by making your code pass additional test cases specified in `tests/test_ec.py`.
-These test cases:
+The function of many HTML tags can be modified by specifying attributes within the opening tag.
+For example:
+```
+This is a hyperlink to <a href="https://izbicki.me">my webpage</a>.
+```
+The `a` tag creates a hyperlink, and the `href` attribute specifies where the link goes.
+Notice that the `href` attribute appears only in the opening tag and not in the closing tag.
 
-1. Ensure that a reasonable exception is thrown whenever there is an error
-1. Ensure that HTML attributes are not included in the tag.
-   For example, the tag `<a href="https://google.com">` should get simplified down to `<a>`.
+The file `tests/test_ec.py` contains test cases for HTML that includes attributes.
+If your code successfully passes all of these test cases, then you will get 1 point of extra credit on the assignment. 
+You must pass all of the test cases and get the green extra credit badge in order to get this point.
 
-You must pass all test in `tests/test_ec.py` to get the extra credit.
+**HINT:**
+You do not need to modify the `validate_html` function at all.
+Instead, just modify the `_extract_tags` function so that it ignores any attributes present in the opening tag.

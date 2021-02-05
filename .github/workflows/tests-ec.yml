@@ -1,4 +1,4 @@
-name: tests-ec
+name: extra_credit
 on:
   push:
     branches: ['*']
