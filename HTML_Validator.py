@@ -13,8 +13,8 @@ def validate_html(html):
 
     # HINT:
     # use the _extract_tags function below to generate a list of html tags without any extra text;
-    # then process these html tags using the balanced parentheses algorithm from the book
-    # the main difference between your code and the book's code will be that you will have to keep track of not just the 3 types of parentheses,
+    # then process these html tags using the balanced parentheses algorithm from the class/book
+    # the main difference between your code and the code from class will be that you will have to keep track of not just the 3 types of parentheses,
     # but arbitrary text located between the html tags
 
 
